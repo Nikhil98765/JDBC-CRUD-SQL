@@ -1,3 +1,4 @@
+import com.java.connection.DbConnection;
 import com.java.operations.Delete;
 import com.java.operations.Insert;
 import com.java.operations.Select;
@@ -9,13 +10,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String dbURL ="jdbc:mysql://localhost:3306/demo?autoReconnect=true&useSSL=false";
-        String username = "root";
-        String password = "Nikhil1234$";
+
 
         try {
 
-            Connection conn = DriverManager.getConnection(dbURL, username, password);
+            DbConnection dbConnection = new DbConnection();
+            Connection conn = dbConnection.connect();
 
 
             while(true){

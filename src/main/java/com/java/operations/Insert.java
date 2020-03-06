@@ -30,12 +30,17 @@ public class Insert {
         Scanner s = new Scanner(System.in);
         String query = "INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?, ?)";
         PreparedStatement stmt = conn.prepareStatement(query);
+        System.out.println("enter the id");
         int id = s.nextInt();
         s.nextLine();
+        System.out.println("enter the name");
         String name = s.nextLine();
+        System.out.println("enter the city");
         String city = s.nextLine();
+        System.out.println("enter the age");
         int age = s.nextInt();
         s.nextLine();
+        System.out.println("enter the department name");
         String deptName = s.nextLine();
 
         Employee em = new Employee(id, name, city, age, deptName);
