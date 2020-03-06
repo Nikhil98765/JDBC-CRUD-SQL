@@ -21,33 +21,30 @@ public class Main {
             while(true){
 
                 System.out.println("1.Insert\n2.Delete\n3.Update\n4.Select\n5.Exit\n");
+                System.out.println("enter your choice");
                 Scanner s = new Scanner(System.in);
                 String sql;
                 int choice = s.nextInt();
                 s.nextLine();
                 switch (choice){
                     case 1:
-                        System.out.println("enter the query to insert values");
-                        sql = s.nextLine();
-                        Insert insertRow = new Insert(conn, sql);
+                        System.out.println("enter the insert values");
+                        Insert insertRow = new Insert(conn);
                         insertRow.init();
                         break;
                     case 2:
-                        System.out.println("enter the query to delete values");
-                        sql = s.nextLine();
-                        Delete deleteRow = new Delete(conn, sql);
+                        System.out.println("enter delete values");
+                        Delete deleteRow = new Delete(conn);
                         deleteRow.init();
                         break;
                     case 3:
                         System.out.println("enter the query to update values");
-                        sql = s.nextLine();
-                        Update updateRow = new Update(conn, sql);
+                        Update updateRow = new Update(conn);
                         updateRow.init();
                         break;
                     case 4:
                         System.out.println("enter the query to fetch data");
-                        sql = s.nextLine();
-                        Select displayData = new Select(conn, sql);
+                        Select displayData = new Select(conn);
                         displayData.init();
                         break;
                     case 5:

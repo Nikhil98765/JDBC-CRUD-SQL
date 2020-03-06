@@ -1,15 +1,17 @@
 package com.java.operations;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Update {
     Connection conn = null;
-    String query = null;
 
-    public Update(Connection conn, String query) {
-        this.query = query;
+
+    public Update(Connection conn) {
+
         this.conn =  conn;
     }
 
@@ -21,8 +23,17 @@ public class Update {
 
     public void updateValues() throws SQLException {
 
-        Statement stmt = conn.createStatement();
-        int rowsInserted = stmt.executeUpdate(this.query);
+        String query = "UPDATE EMPLOYEE SET NAME=? WHERE ID=?";
+
+        Scanner s  = new Scanner(System.in);
+        String name = s.nextLine();
+        int id = s.nextInt();
+        s.nextLine();
+
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setString(1, name);
+        stmt.setInt(2, id);
+        int rowsInserted = stmt.executeUpdate();
         System.out.println(""+rowsInserted + " updated successfully");
 
     }

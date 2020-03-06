@@ -7,10 +7,9 @@ import java.sql.Statement;
 
 public class Select {
     Connection conn = null;
-    String query = null;
 
-    public Select(Connection conn, String query) {
-        this.query = query;
+    public Select(Connection conn) {
+
         this.conn =  conn;
     }
 
@@ -22,8 +21,9 @@ public class Select {
 
     public void displayData() throws SQLException {
 
+        String query = "SELECT * FROM EMPLOYEE";
         Statement stmt = conn.createStatement();
-        ResultSet result = stmt.executeQuery(this.query);
+        ResultSet result = stmt.executeQuery(query);
         while(result.next()){
 
             int id = result.getInt("id");

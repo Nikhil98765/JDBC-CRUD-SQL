@@ -1,15 +1,19 @@
 package com.java.operations;
 
+import com.java.model.Employee;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Delete{
     Connection conn = null;
-    String query = null;
 
-    public Delete(Connection conn, String query) {
-        this.query = query;
+
+    public Delete(Connection conn) {
+
         this.conn =  conn;
     }
 
@@ -22,8 +26,13 @@ public class Delete{
 
     public void deleteRow() throws SQLException {
 
-        Statement stmt = conn.createStatement();
-        int rowsInserted = stmt.executeUpdate(this.query);
+        Scanner s = new Scanner(System.in);
+        String query = "DELETE FROM EMPLOYEE WHERE ID=?";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        int id = s.nextInt();
+        s.nextLine();
+        stmt.setInt(1, id);
+        int rowsInserted = stmt.executeUpdate();
         System.out.println(""+rowsInserted + " deleted successfully");
 
     }
