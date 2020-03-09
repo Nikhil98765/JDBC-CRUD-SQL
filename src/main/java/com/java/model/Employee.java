@@ -1,11 +1,11 @@
 package com.java.model;
 
 public class Employee {
-    int id;
-    String name;
-    String city;
-    int age;
-    String deptName;
+    private int id;
+    private String name;
+    private String city;
+    private int age;
+    private String deptName;
 
     public Employee(int id, String name, String city, int age, String deptName) {
         this.id = id;
